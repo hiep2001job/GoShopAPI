@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "sqlite1": {
+      "type": "sqlite",
+      "connectionId": "ConnectionStrings:goshop",
+      "dynamicId": null
+    }
+  }
+}
