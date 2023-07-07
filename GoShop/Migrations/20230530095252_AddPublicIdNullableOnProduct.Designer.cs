@@ -3,6 +3,7 @@ using System;
 using GoShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoShop.Migrations
 {
     [DbContext(typeof(GoShopContext))]
-    partial class GoShopContextModelSnapshot : ModelSnapshot
+    [Migration("20230530095252_AddPublicIdNullableOnProduct")]
+    partial class AddPublicIdNullableOnProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.16");
@@ -184,14 +186,14 @@ namespace GoShop.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "6a789414-0705-474c-b84a-b6abe95f8206",
+                            ConcurrencyStamp = "d0accb27-24af-4819-a4fc-513bc04e5e4f",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "1f51904e-2bea-43d6-99fc-f131c2c5bfb2",
+                            ConcurrencyStamp = "27ddae75-ff53-4f2f-a708-877a2eea0067",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -240,16 +242,7 @@ namespace GoShop.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("RefreshToken")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("TokenCreated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("TokenExpires")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("TwoFactorEnabled")

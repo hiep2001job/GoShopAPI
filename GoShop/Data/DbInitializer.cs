@@ -1,11 +1,32 @@
 ﻿using GoShop.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace GoShop.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(GoShopContext context)
+        public static async Task Initialize(GoShopContext context, UserManager<User> userManager)
         {
+            var users = await userManager.Users.ToListAsync();
+            if (!userManager.Users.Any())
+            {
+                var user = new User
+                {
+                    UserName = "bob",
+                    Email = "bob@gmail.com"
+                };
+                await userManager.CreateAsync(user, "Bob@123");
+                await userManager.AddToRoleAsync(user, "Member");
+
+                var admin = new User
+                {
+                    UserName = "admin",
+                    Email = "admin@gmail.com"
+                };
+                await userManager.CreateAsync(admin, "Admin@123");
+                await userManager.AddToRolesAsync(admin, new[] { "Member", "Admin" });
+            }
             if (context.Products.Any()) return;
             var products = new List<Product>
             {

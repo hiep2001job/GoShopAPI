@@ -3,6 +3,7 @@ using System;
 using GoShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoShop.Migrations
 {
     [DbContext(typeof(GoShopContext))]
-    partial class GoShopContextModelSnapshot : ModelSnapshot
+    [Migration("20230530095108_AddPublicIdOnProduct")]
+    partial class AddPublicIdOnProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.16");
@@ -140,6 +142,7 @@ namespace GoShop.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("PublicId")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("QuantityInStock")
@@ -184,14 +187,14 @@ namespace GoShop.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "6a789414-0705-474c-b84a-b6abe95f8206",
+                            ConcurrencyStamp = "66d1b7bc-a49a-41ec-8ca9-64f5ffa2d18d",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "1f51904e-2bea-43d6-99fc-f131c2c5bfb2",
+                            ConcurrencyStamp = "813acede-0c48-4df5-b374-965231600d1b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -240,16 +243,7 @@ namespace GoShop.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("RefreshToken")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("TokenCreated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("TokenExpires")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("TwoFactorEnabled")
